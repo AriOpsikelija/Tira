@@ -196,9 +196,19 @@ public class Coder implements Comparable<Coder> {
 	 */
 	@Override
 	public int compareTo(Coder another) {
-		return 0;
-	}
+		if (this.getFullName()==null && another.getFullName()==null){
+			return 0;
+		}else if(this.getFullName()==null){
+			return 1;
+		}else if(another.getFullName()==null){
+			return -1;
+		}else{
 
+			return this.getFullName().compareTo(another.getFullName());
+
+		}
+	}
+	
 	/**
 	 * You need to implement this in Exercise 8 on hash tables. No need to implement
 	 * this before.

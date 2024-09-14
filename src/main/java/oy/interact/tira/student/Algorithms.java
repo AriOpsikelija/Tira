@@ -11,9 +11,25 @@ public class Algorithms {
    ///////////////////////////////////////////
    // Insertion Sort for the whole array
    ///////////////////////////////////////////
-
    public static <T extends Comparable<T>> void insertionSort(T[] array) {
-      // TODO: Implement this.
+      T a;
+      T b;
+      boolean pass=false;
+
+      while(!pass){
+         for(int i=1; i<array.length;i++){
+            a=array[i];
+            if (a.compareTo(array[i-1])<0){
+               b=array[i-1];
+               array[i]=b;
+               array[i-1]=a;
+               break;
+            }
+            if (i==array.length-1){
+               pass=true;
+            }
+         }
+      }
    }
 
    ///////////////////////////////////////////
@@ -21,7 +37,26 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T extends Comparable<T>> void insertionSort(T[] array, int fromIndex, int toIndex) {
-      // TODO: Implement this.
+      T a;
+      T b;
+      boolean pass=false;
+
+      while(!pass){
+         for(int i=fromIndex+1;i<toIndex;i++){
+            a=array[i];
+            if (a.compareTo(array[i-1])<0){
+               b=array[i-1];
+               array[i]=b;
+               array[i-1]=a;
+               break;
+            }
+            if (i==toIndex-1){
+               pass=true;
+            }
+
+         }
+
+      }
    }
 
    //////////////////////////////////////////////////////////
@@ -45,7 +80,19 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T> void reverse(T[] array) {
-      // TODO: Implement this.
+      T a;
+      T b;
+      int i=0;
+      int ii=array.length-1;
+      while(i<ii){
+         a=array[i];
+         b=array[ii];
+         array[ii]=a;
+         array[i]=b;
+         i++;
+         ii--;
+      }
+
    }
 
    ///////////////////////////////////////////
@@ -53,8 +100,19 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T> void reverse(T[] array, int fromIndex, int toIndex) {
-      // TODO: Implement this.
-   }
+      T a;
+      T b;
+      int i=fromIndex;
+      int ii=toIndex-1;
+      while(i<ii){
+         a=array[i];
+         b=array[ii];
+         array[ii]=a;
+         array[i]=b;
+         i++;
+         ii--;
+      }
+      }
 
 
    ///////////////////////////////////////////

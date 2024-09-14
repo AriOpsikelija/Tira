@@ -37,6 +37,8 @@ Alaluvut jokaisen tehtävän raportille löydät alta.
 
 
 ## 01-TASK
+Jos ei muuta, niin tuo githubissa oleva md tiedosto on ollut aina vähän mysteeri. Nyt kävi vasta ilmi, että se on markdown.
+Kovin ruosteessa nää java osaamiset, kun ei työelämässä ole kummemmin tullut vastaan.
 
 ## 02-TASK
 
