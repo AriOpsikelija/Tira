@@ -41,6 +41,7 @@ Jos ei muuta, niin tuo githubissa oleva md tiedosto on ollut aina vähän mystee
 Kovin ruosteessa nää java osaamiset, kun ei työelämässä ole kummemmin tullut vastaan.
 
 ## 02-TASK
+```
 n       F (ms)  S (us)  Total (ms)
 1000    28      3381    31
 2000    17      2276    19
@@ -92,6 +93,7 @@ n       F (ms)  S (us)  Total (ms)
 48000   11499   8872    11507
 49000   12157   11002   12168
 50000   13668   10517   13678
+```
 
 ![Käyrä](raporttikuva.png)
 2 minuuttia ja 39 sekunttia
