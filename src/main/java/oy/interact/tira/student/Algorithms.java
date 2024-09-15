@@ -64,7 +64,24 @@ public class Algorithms {
    //////////////////////////////////////////////////////////
 
    public static <T> void insertionSort(T[] array, Comparator<T> comparator) {      
-      // TODO: Implement this.
+      T a;
+      T b;
+      boolean pass=false;
+
+      while(!pass){
+         for(int i=1; i<array.length;i++){
+            a=array[i];
+            if (comparator.compare(a,array[i-1])<0){
+               b=array[i-1];
+               array[i]=b;
+               array[i-1]=a;
+               break;
+            }
+            if (i==array.length-1){
+               pass=true;
+            }
+         }
+      }
    }
 
    ////////////////////////////////////////////////////////////
@@ -72,7 +89,26 @@ public class Algorithms {
    ////////////////////////////////////////////////////////////
 
    public static <T> void insertionSort(T[] array, int fromIndex, int toIndex, Comparator<T> comparator) {
-      // TODO: Implement this.
+      T a;
+      T b;
+      boolean pass=false;
+
+      while(!pass){
+         for(int i=fromIndex+1;i<toIndex;i++){
+            a=array[i];
+            if (comparator.compare(a,array[i-1])<0){
+               b=array[i-1];
+               array[i]=b;
+               array[i-1]=a;
+               break;
+            }
+            if (i==toIndex-1){
+               pass=true;
+            }
+
+         }
+
+      }
    }
 
    ///////////////////////////////////////////

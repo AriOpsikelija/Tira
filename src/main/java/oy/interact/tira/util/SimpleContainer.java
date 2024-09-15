@@ -55,7 +55,13 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 
 	@Override
 	public E get(E element) throws IllegalArgumentException {
-		throw new NotYetImplementedException("Task 02-TASK on linear search not yet implemented");
+		reallocate(count);
+		for (E e : array) {
+            if (e.equals(element)) {
+                return e;
+            }
+        }
+        return null; 
 	}
 
 	@Override
@@ -65,8 +71,15 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 
 	@Override
 	public int indexOf(E element, Comparator<E> usingComparator) {
-		throw new NotYetImplementedException("Task 02-TASK on linear search not yet implemented");
+		reallocate(count);
+		for (int i=0; i<array.length;i++) {
+            if (array[i].compareTo(element) == 0) {
+                return i;
+            }
+        }
+        return -1;
 	}
+	
 
 	@Override
 	public E remove(E element) throws IllegalArgumentException {
@@ -109,12 +122,25 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 
 	@Override
 	public int findIndex(Predicate<E> searcher) {
-		throw new NotYetImplementedException("Task 02-TASK on linear search not yet implemented");
-	}
+		reallocate(count);
+        for (int i=0; i<array.length;i++) {
+            if (searcher.test(array[i])) {
+                return i;
+            }
+        }
+        return -1;
+    }
+	
 
 	@Override
 	public E find(Predicate<E> searcher) {
-		throw new NotYetImplementedException("Task 02-TASK on linear search not yet implemented");
+		reallocate(count);
+        for (E e : array) {
+            if (searcher.test(e)) {
+                return e;
+            }
+        }
+        return null; 
 	}
 
 	@Override
@@ -173,6 +199,8 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 	@Override
 	public void reverse() {
 		// TODO: Call Algorithms.reverse here
+		Algorithms.reverse(array);
+		sorted=true;
 	}
 
 	@Override
@@ -199,7 +227,13 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 		// TODO: call your sorting algorithm with array, update sorted status of this container!
 		// You may want to check if the array has any elements before calling sort.
 		// Also note that the array here has elements only between 0..<count!
-		System.out.println(usingComparator);
+		reallocate(count);
+		if (array == null || array.length == 0) {
+			return; 
+		}
+		Algorithms.insertionSort(array, usingComparator);
+		sorted=true;
 	}	
 
-}
+
+}	
