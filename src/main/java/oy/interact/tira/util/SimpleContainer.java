@@ -72,12 +72,16 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 	@Override
 	public int indexOf(E element, Comparator<E> usingComparator) {
 		reallocate(count);
-		for (int i=0; i<array.length;i++) {
-            if (array[i].compareTo(element) == 0) {
-                return i;
-            }
-        }
-        return -1;
+		if (!sorted){
+			for (int i=0; i<array.length;i++) {
+				if (array[i].compareTo(element) == 0) {
+					return i;
+				}
+			}
+			return -1;
+		}else{
+			return Algorithms.binarySearch(element, array, 0, count, usingComparator);
+		}
 	}
 	
 
@@ -199,8 +203,8 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 	@Override
 	public void reverse() {
 		// TODO: Call Algorithms.reverse here
-		Algorithms.reverse(array);
 		sorted=true;
+		Algorithms.reverse(array);
 	}
 
 	@Override
@@ -217,8 +221,8 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 		if (array == null || array.length == 0) {
 			return; 
 		}
-		Algorithms.insertionSort(array);
 		sorted=true;
+		Algorithms.insertionSort(array);
 		
 	}
 
@@ -231,8 +235,8 @@ public class SimpleContainer<E extends Comparable<E>> implements TIRAContainer<E
 		if (array == null || array.length == 0) {
 			return; 
 		}
-		Algorithms.insertionSort(array, usingComparator);
 		sorted=true;
+		Algorithms.insertionSort(array, usingComparator);
 	}	
 
 

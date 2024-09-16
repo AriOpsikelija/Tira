@@ -116,6 +116,54 @@ Onko oululla jotain sopimusta, että opiskelija saa käyttää CSC supertietokon
 
 ## 03-TASK
 
+```
+n       F (ms)  S (us)  Total (ms)
+1000    15      907     2119    924
+2000    11      7860    1397    7872
+3000    25      26007   1240    26033
+4000    28      77642   1628    77671
+5000    43      156629  1034    156673
+6000    66      295414  1058    295481
+7000    85      484230  1617    484316
+8000    114     772098  962     772212
+9000    154     1053650 992     1053804
+10000   184     1486532 1342    1486717
+```
+![Käyrä](raporttikuva2.png)
+
+En jaksanut testejä odottaa loppuun saakka. Annoin pyöriä tunnin ja vilkasin et testeissä se vetäis vielä 6000 tohon päälle ni se loppu siihen.
+kokeilin asettaa että käyttää max stack ja keko muistia muttei se auttanut, niin ei voi minkään.
+
+Koodi läpäisi testit kunhan säädin, että tekee vain 1000 16000 ja 10000 sijaan.
+Vaikkei sitä testiä saanut muokata, niin veikkaan et jos se niillä pienemmillä menee läpi. Teidän koneella testien pitäs niillä isommilla seteillä mennä yhtälailla läpi.
+```                            
+               .::--=========.               
+            .--==++==========+**             
+           --=+++*****+++++=++@@+            
+          .#%@@@@@@@@@@@@@@%@@@@@@@          
+          =@@@@@@@@@@@@@@@@@@@@@@@@@.        
+          #@@@@@#::=+@@@@@@@@@@@@@@@@        
+          =@@%@*:-=+%@@@@*+%@@@@@@@@@.       
+           -+++:==+%@@@#=====*@@@@@@@:       
+          --+=:==*@@@@@*==+=+@@@@@@@@-       
+         =+=--=+*@@@@@@%+===*@@@@@@@@-       
+        -==--=+#@#+++#@@@*++%@@@@@@@@=       
+        -+@@@@@@@@@@@@@@@@%+@@@@@@@@@=       
+        =+@@@@@@@@@@@@@@@@@@@@@@@@@@@+       
+        ==--+++*#@@@@@@@@@@@@@@@@@@@@+       
+       .=+#%%%%%##*#@@@@@@@@@@@@@@@@@*       
+       .+@@@@@@@@@@@@@@@@@@@@@@@@@@@@        
+       .=+%@@@@@@@@#+*@@@@@@@@@@@@*          
+       .=++%@@@@@%+==+#@@@@@@@@@@@           
+       .===++#%%*+===+*@@@@@@@@@@@           
+       :=====+========+%@@@@@@@@@@           
+       +*++=--===+==+++%@@@@@@@@@@           
+        #@@%%%%%%%%%@@@@@@@@@@@*.            
+            ......                           
+```
+Pääasiassa se toimii. Pistin koodin täytee debug viestejä ja testasin et toimiiko se exact ja olihan se noin 5ms nopeampi.
+Kummempaa analyysiä tässä ei voi tehdä kun ei riitä rahat sellaseen.
+
 ## 04-TASK
 
 ## 05-TASK
