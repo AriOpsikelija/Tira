@@ -48,6 +48,48 @@ public class ParenthesisChecker {
       //         throw an exception, wrong kind of parenthesis were in the text (e.g. "asfa ( asdf } sadf")
       // if the stack is not empty after all the characters have been handled
       //   throw an exception since the string has more opening than closing parentheses.
-      return -1;
+
+         int a=0;
+         int b=1;
+         int c=0;
+         boolean imm=false;
+         for (int i=0; i<fromString.length(); i++){
+            char ch=fromString.charAt(i);
+            c++;
+
+            if (ch=='\n'){
+               c=0;
+               b++;
+            }  
+
+            if (ch=='"'){
+               imm=!imm;
+            }else if(imm){
+               continue;
+            }
+
+            if (ch=='{'||ch=='['||ch=='('){
+               try{
+               stack.push(ch);
+               } catch(Exception e) { throw new ParenthesesException("asd",b,c,ParenthesesException.STACK_FAILURE);}
+            }else if(ch==')'||ch==']'||ch=='}'){
+               if (stack.isEmpty()){
+                  throw new ParenthesesException("asd",b,c,ParenthesesException.TOO_MANY_CLOSING_PARENTHESES);
+               }
+               char open=stack.pop();
+               String comb = open + String.valueOf(ch);
+               if (comb.equals("()")||comb.equals("[]")||comb.equals("{}")){
+                  a+=2;
+               }else{
+                  throw new ParenthesesException("asd",b,c,ParenthesesException.PARENTHESES_IN_WRONG_ORDER);
+               }
+            }
+         }
+         if (!stack.isEmpty()){
+            throw new ParenthesesException("asd",b,c,ParenthesesException.TOO_MANY_OPENING_PARENTHESES);
+         }
+      return a;
+
    }
 }
+

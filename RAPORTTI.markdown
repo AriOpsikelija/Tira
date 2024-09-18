@@ -166,6 +166,13 @@ Kummempaa analyysiä tässä ei voi tehdä kun ei riitä rahat sellaseen.
 
 ## 04-TASK
 
+Tää olikin ihan hauska tehtävä. Tuo parenthses osio. En ole ennen json tiedostoja joutunut korjaamaan, niin tuo "[" piilossa oleva veijari pisti minut hetkeks solmuun.
+
+Kaikki paitsi push ja toString on O(1). Näiden kahden kohalla ei voinut minkää. Molemmissa on nuo forloopit jotka korottaa ne O(n)
+
+kun taas pop, peek, size, capacity, isempty ja clear on kerta heitolla yhdessä iteraatiossa suoritettuja.
+
+
 ## 05-TASK
 
 ## 06-TASK
