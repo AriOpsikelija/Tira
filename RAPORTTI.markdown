@@ -175,6 +175,18 @@ kun taas pop, peek, size, capacity, isempty ja clear on kerta heitolla yhdessä 
 
 ## 05-TASK
 
+En tehnyt molempia toteutuksia, mutta ammuin itseäni senverran lujaa jalkaan, että osaan arvostaa tuota linkitettyä listaa.
+Tein sellaisen virheen, että kopioin lähestulkoon kaikki funktiot viime tehtävästä ja täten aiheutin viime partailla ongelmia sen listan koon ja tail head systeemin kanssa.
+Tässä ei olisi ollut ongelmaa mikäli oisin tehnyt linkitetyn listan alustapitäen. Sillä linkitetyssä listassa voi vain poistaa niitä elementtejä mennen tullen. Kun tuota array 
+systeemiä pitää vahtia, että missä siellä mennään. 
+
+Eli ongelmaksi kävi seuraava scenaario. 5,6,7,_,_,_,_,6,7,8 lisättiin elementti ja mokasin tuli listasta seuraava -> 5,6,7,_,_,_,_,6,7,8,9,_,_,_,_,_,_,_,_,_,_,_,_,_
+tavotehan oli 6,7,8,9,5,6,7,_,_,_... Selvittiin siitä. Oltas selvitty helpommalla linkitetyllä listalla. 
+
+Kyllä kaikki paitsi enque ja toString täyttää vaatimukset O(1). Ja tuo toString oli myös sellane jonka kanssa tuli ongelmia ku kopioi viime tehtävän.
+
+
+
 ## 06-TASK
 
 ## 07-TASK
