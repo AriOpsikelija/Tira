@@ -246,10 +246,34 @@ public class Algorithms {
       fastSort(array, fromIndex, toIndex, comparator, FastSortAlgorithm.QUICKSORT);
    }
 
+   public static <E> void swap(E[] arr, int i, int j){
+      E temp = arr[i];
+      arr[i] = arr[j];
+      arr[j] = temp;
+   }
+   public static <E> int partition(E[] arr, int low, int high, Comparator<E> comparator){
+       E pivot = arr[high];
+       int i = (low - 1);
+       for (int j=low; j<=high-1; j++) {
+           if (comparator.compare(arr[j], pivot)<=0){
+               i++;
+               swap(arr, i, j);
+           }
+       }
+       swap(arr, i+1, high);
+       return (i+1);
+   }
+   public static <E> void quicksort(E[] arr, int low, int high, Comparator<E> comparator){
+      if (low<high) {
+         int pi = partition(arr, low, high, comparator);
+         quicksort(arr, low, pi-1, comparator);
+         quicksort(arr, pi+1, high, comparator);
+      }
+   }
    public static <E> void fastSort(E[] array, int fromIndex, int toIndex, Comparator<E> comparator, FastSortAlgorithm algorithm) {
       switch (algorithm) {
          case QUICKSORT:
-            // TODO: Call your quicksort algorithm here.
+            quicksort(array, fromIndex, toIndex-1, comparator);
             break;
          case HEAPSORT:
             // TODO: IF implementing heapsort, call your algorithm here.

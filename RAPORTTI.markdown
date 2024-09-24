@@ -189,6 +189,32 @@ Kyllä kaikki paitsi enque ja toString täyttää vaatimukset O(1). Ja tuo toStr
 
 ## 06-TASK
 
+Tuota noin joo. Tämä minu kone ei tykkää tehdä noita >1000 json tiedostoja. Se on harminloista. Vaikka noudatin what the stack ja not enough memory ohjeita.
+Outoa on kanssa että tuo Fast testi lataa sen phonebookin sekunneissa, kun taas tuo slow ei saa operaatiota suoritettua.
+Eli se ei ole tuon muistin kanssa ongelma vaan minun koneen prossu ei vaan jaksa laskea kyllin nopeata näitä sorttaus tehtäviä.
+
+|Test#|Count|ms|ms/element|
+|-----|--------|--------|-------|
+|1|100|57|0,57|
+|2|1000|10211|10,211|
+
+
+|Test#    |  Count      |  ms             | ms/element|
+|-----|--------|--------|-------|
+|  1      |    100  |            15       |    0,150|
+|  2     |    1000   |           10      |     0,010|
+|  3    |     5000    |          25     |      0,005|
+|  4   |     10000     |         37    |       0,004|
+|  5  |      50000      |       169   |        0,003|
+|  6 |      100000       |      571  |         0,006|
+
+InsertionSort on astronomisesti hitaampi kuin tämä quicksort, koska quicksort skooppi aina pienenee joka iteraatiolla kun taas tuo insertionsort on edelleen O(n)
+
+
+![Käyrä](raporttikuva3.png)
+![Käyrä](raporttikuva4.png)
+
+
 ## 07-TASK
 
 ## 08-TASK
