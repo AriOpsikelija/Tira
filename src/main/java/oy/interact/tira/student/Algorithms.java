@@ -12,24 +12,15 @@ public class Algorithms {
    // Insertion Sort for the whole array
    ///////////////////////////////////////////
    public static <T extends Comparable<T>> void insertionSort(T[] array) {
-      T a;
-      T b;
-      boolean pass=false;
-
-      while(!pass){
-         for(int i=1; i<array.length;i++){
-            a=array[i];
-            if (a.compareTo(array[i-1])<0){
-               b=array[i-1];
-               array[i]=b;
-               array[i-1]=a;
-               break;
-            }
-            if (i==array.length-1){
-               pass=true;
-            }
+      for (int i=1; i<array.length; i++){
+         T a=array[i];
+         int j=i-1;
+         while (j>=0&&array[j].compareTo(a)>0) {
+             array[j+1]=array[j];
+             j--;
          }
-      }
+         array[j+1]=a;
+     }
    }
 
    ///////////////////////////////////////////
@@ -37,26 +28,15 @@ public class Algorithms {
    ///////////////////////////////////////////
 
    public static <T extends Comparable<T>> void insertionSort(T[] array, int fromIndex, int toIndex) {
-      T a;
-      T b;
-      boolean pass=false;
-
-      while(!pass){
-         for(int i=fromIndex+1;i<toIndex;i++){
-            a=array[i];
-            if (a.compareTo(array[i-1])<0){
-               b=array[i-1];
-               array[i]=b;
-               array[i-1]=a;
-               break;
-            }
-            if (i==toIndex-1){
-               pass=true;
-            }
-
+      for (int i = fromIndex; i < toIndex; i++) {
+         T a=array[i];
+         int j=i;
+         while (j>fromIndex&&array[j-1].compareTo(a)>0) {
+             array[j]=array[j-1];
+             j--;
          }
-
-      }
+         array[j]=a;
+     }
    }
 
    //////////////////////////////////////////////////////////
@@ -64,24 +44,15 @@ public class Algorithms {
    //////////////////////////////////////////////////////////
 
    public static <T> void insertionSort(T[] array, Comparator<T> comparator) {      
-      T a;
-      T b;
-      boolean pass=false;
-
-      while(!pass){
-         for(int i=1; i<array.length;i++){
-            a=array[i];
-            if (comparator.compare(a,array[i-1])<0){
-               b=array[i-1];
-               array[i]=b;
-               array[i-1]=a;
-               break;
-            }
-            if (i==array.length-1){
-               pass=true;
-            }
+      for (int i=1; i<array.length; i++) {
+         T a=array[i];
+         int j=i;
+         while(j>0&&comparator.compare(array[j-1],a)>0) {
+             array[j]=array[j-1];
+             j--;
          }
-      }
+         array[j]=a;
+     }
    }
 
    ////////////////////////////////////////////////////////////
@@ -89,26 +60,15 @@ public class Algorithms {
    ////////////////////////////////////////////////////////////
 
    public static <T> void insertionSort(T[] array, int fromIndex, int toIndex, Comparator<T> comparator) {
-      T a;
-      T b;
-      boolean pass=false;
-
-      while(!pass){
-         for(int i=fromIndex+1;i<toIndex;i++){
-            a=array[i];
-            if (comparator.compare(a,array[i-1])<0){
-               b=array[i-1];
-               array[i]=b;
-               array[i-1]=a;
-               break;
-            }
-            if (i==toIndex-1){
-               pass=true;
-            }
-
+      for (int i=fromIndex; i<toIndex; i++) {
+         T a=array[i];
+         int j=i;
+         while(j>fromIndex&&comparator.compare(array[j-1],a)>0) {
+             array[j]=array[j-1];
+             j--;
          }
-
-      }
+         array[j]=a;
+     }
    }
 
    ///////////////////////////////////////////
