@@ -4,9 +4,10 @@ import oy.interact.tira.util.TIRAKeyedOrderedContainer;
 import java.util.function.Predicate;
 import oy.interact.tira.util.Pair;
 import java.util.Comparator;
+import oy.interact.tira.model.Coder;
 
 public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TIRAKeyedOrderedContainer<K, V> {    
-    
+    private int currentIndex;
     private class TreeNode {
         K key;
         V value;
@@ -33,23 +34,37 @@ public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TI
         root=null;
 	}
 
-
     @Override
     public void add(K key, V value) {
-        root = addRecursive(root, key, value);        
+        root = addRecursive(root, key, value);      
     }
-    
     private TreeNode addRecursive(TreeNode node, K key, V value) {
         if (node == null) {
             return new TreeNode(key, value);
         }
         int cmp = comparator.compare(key,node.key);
+        
+        if (value==node.value){
+            return new TreeNode(key, value);
+        }
+
+            
+        
         if (cmp < 0) {
             node.left = addRecursive(node.left, key, value);
         } else if (cmp > 0) {
             node.right = addRecursive(node.right, key, value);
         } else {
-            node.value = value; 
+            int cmp2=((Coder) value).compareTo((Coder) node.value);
+            if (cmp2==0){
+                node.value = value; 
+            }
+            if (cmp2<0){
+                node.left = addRecursive(node.left, key, value);
+            }
+            if (cmp2>0){
+                node.right = addRecursive(node.right, key, value);
+            }
         }
     
         return node;
@@ -82,21 +97,72 @@ public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TI
         // Empty
     }
     @Override
-    public int findIndex(Predicate<V> searcher){
-        // Empty
-        return 0;
+    public int findIndex(Predicate<V> searcher) {
+        System.out.println("Start " + searcher);
+        return findIndexRec(root, searcher, 0);
     }
+    
+    private int findIndexRec(TreeNode node, Predicate<V> searcher, int index) {
+        if (node == null) {
+            return -1; // Not found
+        }
+    
+        if (searcher.test(node.value)) {
+            return index;
+        }
+    
+        int leftIndex = findIndexRec(node.left, searcher, index);
+        if (leftIndex != -1) {
+            return leftIndex;
+        }
+    
+        return findIndexRec(node.right, searcher, index + size(node.left) + 1);
+    }
+
     @Override
     public Pair<K,V> getIndex(int index){
-        return null;
+        currentIndex=0;
+        return getIndex(root,index);
+    }
+
+    private Pair<K, V> getIndex(TreeNode node, int index) {
+        if (node == null) {
+            return null; 
+        }
+
+        Pair<K, V> leftResult = getIndex(node.left, index);
+        if (leftResult != null) {
+            return leftResult;
+        }
+
+        if (currentIndex == index) {
+            return new Pair<>(node.key, node.value);
+        }
+        currentIndex++;
+
+        return getIndex(node.right, index);
     }
     @Override
-    public int indexOf(K key){
-        return 0;
+    public int indexOf(K key) {
+        return indexOfRec(root, key, 0);
     }
 
+    private int indexOfRec(TreeNode node, K key, int index) {
+        if (node == null){
+            return -1;
+        }
 
-
+        int left = indexOfRec(node.left, key, index);
+        if (left != -1){
+            return left;
+        }
+        if (comparator.compare(node.key,key)==0){
+            return size(node.left)+index;
+        }
+        
+        return indexOfRec(node.right, key, index+1);
+    }
+    
 
     @Override
     public Pair<K, V>[] toArray() {
@@ -126,7 +192,7 @@ public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TI
     
     @Override 
     public void clear(){
-
+        root = null;
     }
     @Override
     public void ensureCapacity(int a){
