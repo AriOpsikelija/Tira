@@ -7,7 +7,6 @@ import java.util.Comparator;
 import oy.interact.tira.model.Coder;
 
 public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TIRAKeyedOrderedContainer<K, V> {    
-    private int currentIndex;
     private class TreeNode {
         K key;
         V value;
@@ -98,49 +97,46 @@ public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TI
     }
     @Override
     public int findIndex(Predicate<V> searcher) {
-        System.out.println("Start " + searcher);
-        return findIndexRec(root, searcher, 0);
+        return findIndexRec(root,searcher,0);
     }
-    
     private int findIndexRec(TreeNode node, Predicate<V> searcher, int index) {
         if (node == null) {
-            return -1; // Not found
+            return -1; 
         }
     
         if (searcher.test(node.value)) {
-            return index;
+            return index+size(node.left);
         }
     
-        int leftIndex = findIndexRec(node.left, searcher, index);
-        if (leftIndex != -1) {
-            return leftIndex;
+        int leftResult = findIndexRec(node.left, searcher, index);
+        if (leftResult != -1) {
+            return leftResult;
         }
     
-        return findIndexRec(node.right, searcher, index + size(node.left) + 1);
+        return findIndexRec(node.right, searcher, size(node.left)+ index + 1);
     }
 
     @Override
     public Pair<K,V> getIndex(int index){
-        currentIndex=0;
-        return getIndex(root,index);
+        return getIndexRec(root,index,new int[]{0});
     }
 
-    private Pair<K, V> getIndex(TreeNode node, int index) {
+    private Pair<K, V> getIndexRec(TreeNode node, int index, int[] currentIndex) {
         if (node == null) {
-            return null; 
+            return null;
         }
-
-        Pair<K, V> leftResult = getIndex(node.left, index);
+    
+        Pair<K, V> leftResult = getIndexRec(node.left, index, currentIndex);
         if (leftResult != null) {
             return leftResult;
         }
-
-        if (currentIndex == index) {
+    
+        if (currentIndex[0] == index) {
             return new Pair<>(node.key, node.value);
         }
-        currentIndex++;
-
-        return getIndex(node.right, index);
+        currentIndex[0]++;
+    
+        return getIndexRec(node.right, index, currentIndex);
     }
     @Override
     public int indexOf(K key) {
@@ -157,10 +153,10 @@ public class BinarySearchTreeContainer<K extends Comparable<K>, V> implements TI
             return left;
         }
         if (comparator.compare(node.key,key)==0){
-            return size(node.left)+index;
+            return index+size(node.left);
         }
         
-        return indexOfRec(node.right, key, index+1);
+        return indexOfRec(node.right, key, size(node.left)+index+1);
     }
     
 

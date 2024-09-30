@@ -182,6 +182,35 @@ InsertionSort on astronomisesti hitaampi kuin tämä quicksort, koska quicksort 
 
 Tuo fastsort ei ole muuttunut niin kuva 4 on edelleen oikein.
 ## 07-TASK
+Tää ei ollu hyvä suoritus. 
+Menin ihan solmuun näiden testien kanssa. Iha hitusen muuttu teksti ja lopputulos, niin en tiennyt mistä kiikastaa ja tuli mentyy ympyrää jonkun aikaa.
+
+En tiedä mitä tähän lisäis kun ei ole vielä luennot julki vissiin.
+kattoo parin viikon päästä.
+
+
+Tää oli kumma et siin kesti mukamas vaan 1 ms. 
+6/7 ==> Starting to analyse SimpleContainer with 100000-europe-coders.json 2024/09/30 19:03:41
+ Step 1/7: JSON Parsing - from file 100000-europe-coders.json to JSONArray it took 976 ms
+ Step 2/7: From JSONArray to Coders array it took 114 ms
+ Step 3/7: Adding to SimpleContainer from Coders array it took 283294 ms
+ Step 4/7: Exporting coders to array it took 2 ms
+ Step 5/7: Sorting SimpleContainer took 229641 ms
+ Step 6/7: Searching SimpleContainer took 228104 ms
+ Step 7/7: Calling get(int index) for all items took 1 ms
+![Todiste](todiste.png)
+
+
+ 6/6 ==> Starting to analyse BST with 100000-europe-coders.json 2024/09/30 20:13:12
+ Step 1/6: JSON Parsing - from file 100000-europe-coders.json to JSONArray it took 1156 ms
+ Step 2/6: From JSONArray to Coders array it took 125 ms
+ Step 3/6: Adding to BST from Coders array it took 127 ms
+ Step 4/6: Searching BST took 123 ms
+ Step 5/6: Exporting an array from BST to Coders array it took 13 ms
+ Step 6/6: Calling getIndex(index) for all items took 448378 ms
+
+kaikki testit taskistä 1-7 toimii (grade_1) :)
+Mitenköhä se remove functio ois toiminut. 
 
 ## 08-TASK
 
