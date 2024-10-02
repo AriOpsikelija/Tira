@@ -219,9 +219,12 @@ public class Coder implements Comparable<Coder> {
 	 * 
 	 * @return The hash calculated from the id of the Coder.
 	 */
-	@Override
-	public int hashCode() {
-		return 0;
-	}
+    @Override
+    public int hashCode() {
+        int hash = 7;
+        hash = 31 * hash + (this.getFullName() == null ? 0 : this.getFullName().hashCode());
+        hash = 31 * hash + (coderName == null ? 0 : coderName.hashCode());
+        return hash;
+    }
 
 }

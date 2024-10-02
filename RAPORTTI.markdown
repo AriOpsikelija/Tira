@@ -214,4 +214,12 @@ Mitenköhä se remove functio ois toiminut.
 
 ## 08-TASK
 
+![vertaus](ToArraysorting(ms).png) 
+![vertaus2](Searchitem.png) 
+![vertaus3](Search(ms).png) 
+![vertaus4](Addingperitem(ms).png) 
+![vertaus5](Adding(ms).png)
+
+
+
 ## 09-TASK
