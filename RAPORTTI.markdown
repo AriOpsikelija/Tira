@@ -38,8 +38,13 @@ Alaluvut jokaisen tehtävän raportille löydät alta.
 
 ## 01-TASK
 Revision:
-Se ei ehkä mennyt ekalla kerralla ihan oikein, mutta bubblesortilla on siistimpi nimi kuin insertionsortilla. Se oli ihan tehä tää virhe, niin pääsee vertailee miten O(n^2) näyttää 
+Se ei ehkä mennyt ekalla kerralla ihan oikein, mutta bubblesortilla on siistimpi nimi kuin insertionsortilla. Se oli ihan hyvä tehä tää virhe, niin pääsee vertailee miten O(n^2) näyttää 
 O(n) verrattuna.
+
+Reverse on ollut alustapitäen huippuluokan algoritmi. Se on aikakompleksisuudeltaan O(n/2) se menee vain puoliksi listan läpi.
+
+
+
 
 ## 02-TASK
 Revision:
@@ -102,10 +107,30 @@ n       F (ms)  S (us)  Total (ms)
 Noh nyt tässä tehtävässä onkin jotai analysoitavaa, kun vertaa insertionsorttia ja tuota aijempaa bubblesorttia. Nähdään että on inserttionsort vähän hitaampi tuolla alussa.
 Sit ihan loppuun kun tullaan niin se ohittaa bubblesortin. Katos mie osaan valita tilannepäisesti vaistosta tuon oikean sorttaus algorytmin, niin sentakia aluksi toteutukseni oli bubblesort. Ei voi minkään. Sit sen unohtaa et se oli tosiaan toteutettu takaraivosta. Nyt vasta jälkeenpäi tuli viestiä sähköpostiin et se ratkasu oli tosiaan väärä täälä alussa.
 
+IndexOf ja get ovat lineaarisia, koska ne joutuu käydä listalta kaikki elementit lävitte etsiessään sitä haluttua indexia tai elementtiä.
+Näiden aikakompleksi on täten O(n). Niiden suoritus riippuu siitä miten iso se niiden lista mitä ne käy läpi on.
+
+```
+PhoneBookArray: Reading JSON with  10000 items took 223 ms
+PhoneBookArray: JSON to Coders took 35 ms
+PhoneBookArray: Sorting took 5458 ms
+PhoneBookArray: Added to container & Sorted took 6106 ms
+PhoneBookArray: Reversing took 1 ms
+PhoneBookArray: Sorting took 1400 ms
+PhoneBookArray: Reversing took 1 ms
+PhoneBookArray: Sorting took 5159 ms
+PhoneBookArray: Reversing took 1 ms
+```
+
+Tuolle miksi se kestää vähemmän aikaa codernamen kanssa on näiden osittain valmis järjestys.
+ja reversin on tosiaan tehty vain ½ listasta ja se operaatio on siinä tuon sorttauksen O(n) sijasta.
+
+Niin mitä valmiiksi järjestettyjen taulujen kääntämiseen tulee. On hyvä käyttää nopeampaa algoritmiä. Tässä tapauksessa se olisi tuo Reverse. Juuri siksi että insertion sort tekee sen O(n) kun taas reverse on O(n/2). 
 
 ## 03-TASK
 Revision: 
 ```
+Fill time is in milliseconds, and search time in microseconds
 n       F (ms)  S (us)  Total (ms)
 1000    16      24      2313    42
 2000    9       15      1074    25
@@ -127,6 +152,37 @@ n       F (ms)  S (us)  Total (ms)
 ![Käyrä](raporttikuva2revisio.png)
 
 Se oli vasta tässä tehtävässä kun bubblesortin rajoitukset korostui. Kuka olisi voinut arvata. 
+
+Tuo exact haku nyt on todella tehokas kun sen tietää tasan tarkkaan mitä etitään niin voi leikata listan kahtia ja sit tutkasta, että kummassa lohkossa se todemmin on.
+sit tekee sen 10 kertaa ja se onkin sit siinä.
+
+Sen binaarihaun aikakompleksisuus on O(log n) juurikin siitä syystä et se tekee sen haun tosi pienissä määrissä. verrattuna lineaariseen listaan joka tekee sitä tuhansissa.
+
+```
+PhoneBookArray: Reading JSON with  10000 items took 266 ms
+PhoneBookArray: JSON to Coders took 34 ms
+PhoneBookArray: Sorting took 5048 ms
+PhoneBookArray: Added to container & Sorted took 5632 ms
+PhoneBookArray: Fast search took 1 ms
+PhoneBookArray: Search took 22 ms
+PhoneBookArray: Get coder by index took 0 ms
+PhoneBookArray: Getting friend names took 25 ms
+```
+
+Kaikkien tehtävien tehtyä tuo lineaarinen ei ole hullumpi suoritus 10000 väellä.
+mut käännän listaa niin kattoo mitä sit tapahtuu.
+
+```
+PhoneBookArray: Search took 1 ms
+PhoneBookArray: Get coder by index took 0 ms
+PhoneBookArray: Getting friend names took 2 ms
+```
+
+Se oli se best case scenario kun se oli ihan eka tulos melkein.
+
+mut tuo fast ei muuttunut vaikka kääntelin listaa.
+
+
 
 
 ## 04-TASK
@@ -220,6 +276,11 @@ Mitenköhä se remove functio ois toiminut.
 ![vertaus4](Addingperitem(ms).png) 
 ![vertaus5](Adding(ms).png)
 
+Task 7 toimi hyvin lämppänä tätä tehtävää varten. 
+Hashtable näyttää ylivoimasesti olevan nopeampi kuin bts
+Ainoastaan bts muuttuu nopeammin arrayksi koska sen orderedtraversal strategia tekee niitten nodejen keräämisestä järkyttävän nopean.
+kuitenkin sillä bts menee hirveästi aikaa kun se joutuu niitä puita etsimään kun taas hash löytää oikealla avaimella lähestulkoot suoraan halutun indexin.
 
+ja tuo lisääminenkin on aika operaatio kun joutuu menee sinne puun ääriin ettimään sitä paikkaa kun hash vaan pistää tablen perään uuden elementin.
 
 ## 09-TASK
