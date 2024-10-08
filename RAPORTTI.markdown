@@ -43,7 +43,7 @@ O(n) verrattuna.
 
 Reverse on ollut alustapitäen huippuluokan algoritmi. Se on aikakompleksisuudeltaan O(n/2) se menee vain puoliksi listan läpi.
 
-
+Task-1 Sai päivityksen testeihin ja lisäsin ne, mutta tästä huolimatta testit läpäisevät. Ei kai sen kummemmin.
 
 
 ## 02-TASK
